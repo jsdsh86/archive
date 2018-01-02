@@ -54,7 +54,7 @@ public class Utils {
 		}
 	}
 	public static void main(String[] args) {
-		System.out.println(Utils.listAllFiles("C:\\Users\\cjqjsd\\Desktop\\cpfile"));
+		System.out.println(Utils.listAllFiles("C:\\"));
 	}
 
 	public static boolean checFutureFinished(List<FutureTask<Integer>> futureList) {
