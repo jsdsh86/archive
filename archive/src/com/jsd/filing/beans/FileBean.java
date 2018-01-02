@@ -6,10 +6,8 @@ import java.util.Date;
 import java.util.UUID;
 
 public class FileBean {
-	private String srcFileName;
+	private String srcFilePath;
 	private long srcFileModifyTimeStamp;
-	private String newFileName;
-	private String newFileTimeStamp; //this timestamp is the lastmodifytime of storage file,this attr will occur after filing;
 	private String MD5;
 	private String SHA1;
 	private boolean isWrited;//after write into storage, will set to true
@@ -23,9 +21,8 @@ public class FileBean {
 	public FileBean(String srcFileName) {
 		File file = new File(srcFileName);
 		this.srcFileModifyTimeStamp=file.lastModified();
-		this.srcFileName=srcFileName;
+		this.srcFilePath=srcFilePath;
 		String srcPath = file.getName();
-		this.newFileName=System.nanoTime()+"_"+UUID.randomUUID().toString()+"_"+srcPath;
 		this.isWrited=false; // 
 	}
 	
@@ -38,29 +35,23 @@ public class FileBean {
 	 */
 	public FileBean(String name, String storageDetail) {
 		String[] detail = storageDetail.split(",");
-		this.newFileName=detail[0].trim();
-		this.newFileTimeStamp=detail[1].trim();
-		this.srcFileName=detail[2].trim();
+		this.srcFilePath=detail[2].trim();
 		this.isWrited=true; // 
 	}
 
 
 
 
-	public String toDetailString() {
-		return new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()) +" | MD5=" + MD5  + " | newFileName=" + newFileName + ", newFileTimeStamp="
-				+ newFileTimeStamp + ", srcFileName=" + srcFileName;
-	}
 
 
-	public String getSrcFileName() {
-		return srcFileName;
+	public String getSrcFilePath() {
+		return srcFilePath;
 	}
 
 
 
-	public void setSrcFileName(String srcFileName) {
-		this.srcFileName = srcFileName;
+	public void setSrcFilePath(String srcFileName) {
+		this.srcFilePath = srcFileName;
 	}
 
 
@@ -77,15 +68,6 @@ public class FileBean {
 
 
 
-	public String getNewFileName() {
-		return newFileName;
-	}
-
-
-
-	public void setNewFileName(String newFileName) {
-		this.newFileName = newFileName;
-	}
 
 
 
@@ -123,15 +105,6 @@ public class FileBean {
 		this.isWrited = isWrited;
 	}
 
-
-	public String getNewFileTimeStamp() {
-		return newFileTimeStamp;
-	}
-
-
-	public void setNewFileTimeStamp(String newFileTimeStamp) {
-		this.newFileTimeStamp = newFileTimeStamp;
-	}
 
 
 }

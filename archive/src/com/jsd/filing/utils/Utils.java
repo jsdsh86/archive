@@ -76,9 +76,9 @@ public class Utils {
 
 	public static boolean copy(FileBean fileBean, Map<String, Object> paramMap) {
 		boolean success = true;
-		String resource = fileBean.getSrcFileName();
+		String resource = fileBean.getSrcFilePath();
 		String storageDir = (String) paramMap.get(ConstantNames.STORAGE.getName());
-		String destination = storageDir+"/"+fileBean.getNewFileName();
+		String destination = storageDir+"/"+fileBean.getSrcFileModifyTimeStamp();
 		try {
 			nioCopyFile(resource,destination);
 		} catch (IOException e) {
