@@ -1,0 +1,5 @@
+src will be a string can splited by ";"
+list all file
+get files' generate time and MD5,SHA,add to a map
+if MD5 and SHA is duplicated, only get oldest.
+new file name will be pic's create time
