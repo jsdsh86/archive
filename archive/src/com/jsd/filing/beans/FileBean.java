@@ -7,27 +7,28 @@ import java.util.UUID;
 
 public class FileBean {
 	private String srcFilePath;
-	private long srcFileModifyTimeStamp;
+	private String srcFileCreateTime;
+	private String desFileName;
 	private String MD5;
 	private String SHA1;
 	private boolean isWrited;//after write into storage, will set to true
 	
 	
 
-	/**
-	 * used in get source model
-	 * @param srcFileName
-	 */
-	public FileBean(String srcFileName) {
-		File file = new File(srcFileName);
-		this.srcFileModifyTimeStamp=file.lastModified();
-		this.srcFilePath=srcFilePath;
-		String srcPath = file.getName();
-		this.isWrited=false; // 
+	public FileBean(String srcFilePath, String srcFileCreateTime, String mD5, String sHA1, String desFileName,boolean isWrited) {
+		super();
+		this.srcFilePath = srcFilePath;
+		this.srcFileCreateTime = srcFileCreateTime;
+		MD5 = mD5;
+		SHA1 = sHA1;
+		this.isWrited = isWrited;
+		this.desFileName=desFileName;
 	}
-	
-	
-	
+
+
+
+
+
 
 	/**used in read storage model
 	 * @param name
@@ -37,6 +38,24 @@ public class FileBean {
 		String[] detail = storageDetail.split(",");
 		this.srcFilePath=detail[2].trim();
 		this.isWrited=true; // 
+	}
+
+
+
+
+
+
+	public String getDesFileName() {
+		return desFileName;
+	}
+
+
+
+
+
+
+	public void setDesFileName(String desFileName) {
+		this.desFileName = desFileName;
 	}
 
 
@@ -56,14 +75,17 @@ public class FileBean {
 
 
 
-	public long getSrcFileModifyTimeStamp() {
-		return srcFileModifyTimeStamp;
+	public String getSrcFileCreateTime() {
+		return srcFileCreateTime;
 	}
 
 
 
-	public void setSrcFileModifyTimeStamp(long srcFileModifyTimeStamp) {
-		this.srcFileModifyTimeStamp = srcFileModifyTimeStamp;
+
+
+
+	public void setSrcFileCreateTime(String srcFileCreateTime) {
+		this.srcFileCreateTime = srcFileCreateTime;
 	}
 
 

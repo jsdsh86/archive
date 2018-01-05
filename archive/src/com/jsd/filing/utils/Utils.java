@@ -78,7 +78,7 @@ public class Utils {
 		boolean success = true;
 		String resource = fileBean.getSrcFilePath();
 		String storageDir = (String) paramMap.get(ConstantNames.STORAGE.getName());
-		String destination = storageDir+"/"+fileBean.getSrcFileModifyTimeStamp();
+		String destination = storageDir+"/"+fileBean.getDesFileName();
 		try {
 			nioCopyFile(resource,destination);
 		} catch (IOException e) {
