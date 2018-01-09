@@ -17,15 +17,31 @@ public class MD5Utils {
     protected char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6',  
             '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };  
     public  String getMD5(File file) throws IOException,NoSuchAlgorithmException { 
-    	 MessageDigest md5 = MessageDigest.getInstance("MD5");
-    	 FileInputStream in = new FileInputStream(file);  
-         FileChannel ch = in.getChannel();  
-         MappedByteBuffer byteBuffer = ch.map(FileChannel.MapMode.READ_ONLY, 0,  
-                 file.length());  
-         md5.update(byteBuffer); 
-         String md5String = bufferToHex(md5.digest());
-         logger.info(Thread.currentThread().getName()+" : File | "+file.getAbsolutePath()+" last modified in | "+new Date(file.lastModified())+" 's MD5 is | "+md5String);
-         return md5String;  
+    	 byte[] buf = new byte[4096]; //这个byte[]的长度可以是任意的。
+         MessageDigest md;
+         boolean fileIsNull = true;
+
+         try {
+             FileInputStream fis = new FileInputStream(file);
+             int len = 0;
+             md = MessageDigest.getInstance("MD5");
+
+             len = fis.read(buf);
+             if (len > 0) {
+                 fileIsNull = false;
+                 while (len > 0){
+                     md.update(buf, 0, len);
+                     len = fis.read(buf);
+                 }
+             }
+         } catch (Exception e) {
+             return null;
+         }
+
+         if (fileIsNull)
+             return null;
+         else
+             return new String(bufferToHex(md.digest()));
     }
     private  String bufferToHex(byte bytes[]) {  
         return bufferToHex(bytes, 0, bytes.length);  
@@ -45,4 +61,17 @@ public class MD5Utils {
         stringbuffer.append(c0);  
         stringbuffer.append(c1);  
     }  
+    public static void main(String[] args) {
+    	File file = new File("C:\\Users\\cjqjsd\\Desktop\\2017-01-17_my_vocation.jpg");
+		try {
+			String md5 = new MD5Utils().getMD5(file);
+			System.out.println(md5);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
