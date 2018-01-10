@@ -26,10 +26,6 @@ public class FileBean {
 	}
 
 
-
-
-
-
 	/**used in read storage model
 	 * @param name
 	 * @param trim
