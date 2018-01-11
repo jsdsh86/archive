@@ -17,7 +17,9 @@ import com.jsd.filing.beans.FileBean;
 import com.jsd.filing.mainProc.ConstantNames;
 
 public class Utils {
-
+	public static int getThreadNum() {
+		return  Runtime.getRuntime().availableProcessors();
+	}
 	public static ArrayList<String> listAllFiles(String sourceFile) {
 		String[] sourceFileArr = sourceFile.split(";");
 		ArrayList<String> sourceFileList = new ArrayList<String>();
@@ -74,7 +76,7 @@ public class Utils {
 		return status;
 	}
 
-	public static boolean copy(FileBean fileBean, Map<String, Object> paramMap) {
+	public  boolean copy(FileBean fileBean, Map<String, Object> paramMap) {
 		boolean success = true;
 		String resource = fileBean.getSrcFilePath();
 		String storageDir = (String) paramMap.get(ConstantNames.STORAGE.getName());
@@ -89,7 +91,7 @@ public class Utils {
 		return success;
 	}
 	
-	public static void nioCopyFile(String resource, String destination) throws IOException {
+	public void nioCopyFile(String resource, String destination) throws IOException {
 		FileInputStream fis = new FileInputStream(resource);
 		FileOutputStream fos = new FileOutputStream(destination);
 		FileChannel readChannel = fis.getChannel(); 

@@ -17,7 +17,7 @@ import com.drew.metadata.Tag;
 public class Test {
 
 	public static void main(String[] args) {
-//		readPic();
+		readPic();
 //		String time ="Jan:02:09:19:53:CST:2018";
 		String time ="Tue Jan 17 15:56:49 CST 2017";
 //		time="Wed Sep 16 11:26:23 CST 2009";
@@ -26,7 +26,7 @@ public class Test {
 		LocalDateTime dateTime = LocalDateTime.parse(time,pattern);
 //		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
 		Date parse = null;
-		System.out.println(dateTime+"_01");
+//		System.out.println(dateTime+"_01");
 
 		 // 定义一个任意格式的日期时间字符串  
 //        String str1 = "2014==04==12 01时06分09秒";  
@@ -44,7 +44,7 @@ public class Test {
 //        System.out.println(dt2); // 输出 2014-04-13T20:00  
 	}
 	 private static void readPic() {
-	        File jpegFile = new File("C:\\Users\\cjqjsd\\Desktop\\2017-01-17_my_vocation.jpg");
+	        File jpegFile = new File("C:\\Users\\cjqjsd\\Desktop\\da.jpg");
 //		 File jpegFile = new File("C:\\Users\\cjqjsd\\Desktop\\微信图片_20180102091947.jpg");
 	        Metadata metadata;
 	        try {

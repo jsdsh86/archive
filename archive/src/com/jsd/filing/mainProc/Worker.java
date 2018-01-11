@@ -28,6 +28,12 @@ public class Worker {
 
 	}
 
+	/**
+	 * iterater all file to dicFiles
+	 * @param file
+	 * @param dicFiles
+	 * @return
+	 */
 	public List<File> getAllDicFiles(File file, List<File> dicFiles) {
 
 		File[] listFiles = file.listFiles();
