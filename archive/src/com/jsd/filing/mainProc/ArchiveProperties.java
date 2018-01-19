@@ -21,7 +21,11 @@ public class ArchiveProperties {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * plsuse
+	 * @return
+	 */
+	@Deprecated 
 	public String getSourceFile () {
 		return prop.getProperty(sourceFile);
 	}

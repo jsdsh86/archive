@@ -13,10 +13,16 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.jsd.filing.beans.FileBean;
 import com.jsd.filing.mainProc.ConstantNames;
+import com.jsd.filing.mainProc.MainProcess;
 
 public class Utils {
+	private static final Logger logger = LogManager.getLogger(Utils.class);
+
 	public static int getThreadNum() {
 		return  Runtime.getRuntime().availableProcessors();
 	}
@@ -92,6 +98,7 @@ public class Utils {
 	}
 	
 	public void nioCopyFile(String resource, String destination) throws IOException {
+		logger.info( resource +" start to copy ");
 		FileInputStream fis = new FileInputStream(resource);
 		FileOutputStream fos = new FileOutputStream(destination);
 		FileChannel readChannel = fis.getChannel(); 
@@ -108,5 +115,8 @@ public class Utils {
 		}
 		readChannel.close();
 		writeChannel.close();
+		fis.close();
+		fos.close();
+		logger.info(resource+" copy to "+destination+" " );
 	}
 }

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Worker {
-	public List<File> getAllFiles(String fileString) {
+	public ArrayList<File> getAllFiles(String fileString) {
 		try {
-			List<File> allFiles = new ArrayList<File>();
+			ArrayList<File> allFiles = new ArrayList<File>();
 			String[] split = fileString.split(";");
 			for (int i = 0; i < split.length; i++) {
 				File file = new File(split[i]);

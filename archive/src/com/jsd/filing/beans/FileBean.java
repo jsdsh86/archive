@@ -1,13 +1,10 @@
 package com.jsd.filing.beans;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 public class FileBean {
 	private String srcFilePath;
-	private String srcFileCreateTime;
+	private Long srcFileLastModifyTime;
 	private String desFileName;
 	private String MD5;
 	private String SHA1;
@@ -15,12 +12,12 @@ public class FileBean {
 	
 	
 
-	public FileBean(String srcFilePath, String srcFileCreateTime, String mD5, String sHA1, String desFileName,boolean isWrited) {
+	public FileBean(String srcFilePath, Long srcFileLastModifyTime, String mD5, String sHA1, String desFileName,boolean isWrited) {
 		super();
 		this.srcFilePath = srcFilePath;
-		this.srcFileCreateTime = srcFileCreateTime;
-		MD5 = mD5;
-		SHA1 = sHA1;
+		this.srcFileLastModifyTime = srcFileLastModifyTime;
+		this.MD5 = mD5;
+		this.SHA1 = sHA1;
 		this.isWrited = isWrited;
 		this.desFileName=desFileName;
 	}
@@ -71,8 +68,8 @@ public class FileBean {
 
 
 
-	public String getSrcFileCreateTime() {
-		return srcFileCreateTime;
+	public Long getsrcFileLastModifyTime() {
+		return srcFileLastModifyTime;
 	}
 
 
@@ -80,8 +77,8 @@ public class FileBean {
 
 
 
-	public void setSrcFileCreateTime(String srcFileCreateTime) {
-		this.srcFileCreateTime = srcFileCreateTime;
+	public void setsrcFileLastModifyTime(Long srcFileLastModifyTime) {
+		this.srcFileLastModifyTime = srcFileLastModifyTime;
 	}
 
 
